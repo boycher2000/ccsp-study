@@ -15,6 +15,10 @@ TARGET_TOTAL = 1000
 REQUIRED = ["id", "domain", "topic", "difficulty", "status", "stem", "options", "answer", "explain", "why"]
 STATUSES = {"draft", "reviewed", "verified"}
 
+MIN_NOTE_CHARS = 1200
+REQUIRED_HEADINGS = ["### 白話重點", "### 名詞解釋", "### 考點"]
+note_chars = {}
+
 errors, warnings = [], []
 
 
@@ -45,11 +49,32 @@ def main():
         if not path.exists():
             err(f"missing notes file {path.name}")
             continue
-        found = set(re.findall(r"^##\s+(\d\.\d)\s", path.read_text(encoding="utf-8"), re.M))
+        text = path.read_text(encoding="utf-8")
+        sections = {}
+        for m in re.finditer(r"^## (\d\.\d)\s.*?(?=^## \d\.\d\s|\Z)", text, re.M | re.S):
+            sections[m.group(1)] = m.group(0)
         for t in d["topics"]:
-            if t["id"] not in found:
+            sec = sections.get(t["id"])
+            if sec is None:
                 err(f"no note section for topic {t['id']}")
-        for extra in found - {t["id"] for t in d["topics"]}:
+                continue
+            note_chars[t["id"]] = len(sec)
+            if len(sec) < MIN_NOTE_CHARS:
+                warn(f"note {t['id']} is short ({len(sec)} chars, want >= {MIN_NOTE_CHARS})")
+            cm = re.search(r"<!--\s*covers:\s*([\d,\s]+)-->", sec)
+            if not cm:
+                err(f"note {t['id']}: missing '<!-- covers: 1,2,... -->' line")
+            else:
+                covered = {int(x) for x in re.findall(r"\d+", cm.group(1))}
+                want = set(range(1, len(t["bullets"]) + 1))
+                if covered != want:
+                    miss = sorted(want - covered)
+                    extra = sorted(covered - want)
+                    err(f"note {t['id']}: covers marker mismatch (missing {miss}, unknown {extra})")
+            for need in REQUIRED_HEADINGS:
+                if need not in sec:
+                    warn(f"note {t['id']}: missing section '{need}'")
+        for extra in set(sections) - {t["id"] for t in d["topics"]}:
             err(f"note section {extra} is not in outline domain {d['id']}")
 
     # questions
@@ -100,6 +125,12 @@ def main():
             per_topic[q["topic"]] += 1
             per_domain[q["domain"]] += 1
             status_count[q.get("status")] += 1
+
+    if (DATA / "notes" / "overview.md").exists() is False:
+        warn("notes/overview.md is missing")
+    if note_chars:
+        print(f"Notes: {len(note_chars)}/38 topics, {sum(note_chars.values())} chars total, "
+              f"shortest {min(note_chars.values())}, longest {max(note_chars.values())}")
 
     total = sum(per_domain.values())
     print(f"Questions: {total} / {TARGET_TOTAL} target   status: {dict(status_count)}")

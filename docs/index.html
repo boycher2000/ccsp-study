@@ -9,18 +9,41 @@
 </head>
 <body>
   <header class="top">
-    <a class="brand" href="#/">CCSP 備考</a>
+    <a class="brand" href="./">CCSP 備考</a>
     <nav>
-      <a href="#/">大綱</a>
-      <a href="#/quiz">刷題</a>
-      <a href="#/wrong">錯題本</a>
-      <a href="#/about">關於</a>
+      <a href="notes/" data-nav="notes">筆記</a>
+      <a href="quiz/" data-nav="quiz">刷題</a>
     </nav>
   </header>
-  <main id="app" aria-live="polite">載入中…</main>
+  <main>
+    <h1>CCSP 備考</h1>
+    <p class="muted">依 ISC2 CCSP 2026-08-01 生效大綱整理:6 個 domain、38 個子項。考試為 CAT,100–150 題,3 小時,通過分數 700/1000。</p>
+    <div class="entry">
+      <a class="entrycard" href="notes/">
+        <span class="entryicon">📖</span>
+        <strong>筆記</strong>
+        <span>先搞懂觀念。每個子項有白話重點、名詞解釋、比較表、口訣與易錯陷阱,可搜尋。</span>
+        <span class="pill" id="nc">38 個子項</span>
+      </a>
+      <a class="entrycard" href="quiz/">
+        <span class="entryicon">✍️</span>
+        <strong>刷題</strong>
+        <span>依官方權重抽題,練習模式看解析、模擬考模式交卷後檢討,錯題本與進度。</span>
+        <span class="pill" id="qc">題庫載入中</span>
+      </a>
+    </div>
+    <p class="muted">這是兩個獨立的入口:筆記不需要刷題,刷題也不需要先看筆記。題目答完可以一鍵跳到對應筆記。</p>
+  </main>
   <footer class="foot">
     非 ISC2 官方資源,與 ISC2 無關。題目為原創練習題,不是考古題。內容為草稿,請以官方文件為準。
   </footer>
-  <script src="assets/app.js"></script>
+  <script src="assets/common.js" data-base=""></script>
+  <script>
+    CCSP.loadOutline().then(function (o) {
+      return CCSP.loadQuestions(o.outline);
+    }).then(function (q) {
+      document.getElementById("qc").textContent = "題庫 " + q.list.length + " 題(目標 1000)";
+    }).catch(function () {});
+  </script>
 </body>
 </html>

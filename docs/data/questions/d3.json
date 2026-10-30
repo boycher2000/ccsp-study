@@ -1,0 +1,47 @@
+[
+  {
+    "id": "D3-3.1-001", "domain": 3, "topic": "3.1", "difficulty": 1, "status": "draft",
+    "stem": "Which component of cloud infrastructure, if compromised, would give an attacker the broadest control over many tenants' resources?",
+    "options": ["A guest operating system", "The management plane", "An application", "A single storage volume"],
+    "answer": 1,
+    "explain": "管理平面可建立、修改、刪除資源,權限最高、影響最廣。",
+    "why": ["客體 OS 只影響單一實例。", "正確。", "單一應用只影響該應用。", "單一磁碟區範圍有限。"],
+    "tags": ["management-plane"], "source": []
+  },
+  {
+    "id": "D3-3.2-001", "domain": 3, "topic": "3.2", "difficulty": 2, "status": "draft",
+    "stem": "A provider designs a data center with two independent network carriers entering the building from opposite sides. Which design goal does this MOST directly support?",
+    "options": ["Multi-vendor pathway connectivity for connectivity resilience", "Tenant partitioning", "Physical access control", "HVAC redundancy"],
+    "answer": 0,
+    "explain": "不同電信商、不同路徑進線,對應多供應商路徑連線,目的是避免單點故障。",
+    "why": ["正確。", "租戶分割是邏輯設計。", "存取控制與進線路徑無關。", "空調備援針對環境控制。"],
+    "tags": ["data-center", "resilience"], "source": []
+  },
+  {
+    "id": "D3-3.3-001", "domain": 3, "topic": "3.3", "difficulty": 2, "status": "draft",
+    "stem": "A risk assessment identifies a high-likelihood threat to a workload. Management decides to purchase cyber insurance that covers the financial loss. Which risk treatment strategy is this?",
+    "options": ["Avoid", "Mitigate", "Transfer", "Accept"],
+    "answer": 2,
+    "explain": "保險把財務損失轉移給第三方,屬 transfer;它不降低發生機率或消除法律責任。",
+    "why": ["avoid 是停止會產生風險的活動。", "mitigate 是降低機率或衝擊。", "正確。", "accept 是不採取額外措施。"],
+    "tags": ["risk-treatment"], "source": []
+  },
+  {
+    "id": "D3-3.4-001", "domain": 3, "topic": "3.4", "difficulty": 2, "status": "draft",
+    "stem": "After an incident, an investigator needs to reconstruct the actual content of network communications. Which audit mechanism provides this?",
+    "options": ["Log correlation", "Packet capture", "A configuration baseline", "A vulnerability scan"],
+    "answer": 1,
+    "explain": "封包擷取保留通訊內容;記錄多半只有事件與中繼資料。雲端需要供應商提供鏡像或擷取功能。",
+    "why": ["關聯分析串起事件,不保存內容。", "正確。", "基準用於比較設定。", "弱點掃描找出弱點,不記錄通訊。"],
+    "tags": ["audit", "packet-capture"], "source": []
+  },
+  {
+    "id": "D3-3.5-001", "domain": 3, "topic": "3.5", "difficulty": 2, "status": "draft",
+    "stem": "A system has a Recovery Time Objective (RTO) of 4 hours and a Recovery Point Objective (RPO) of 15 minutes. Which statement is correct?",
+    "options": ["Service must be restored within 4 hours, and up to 15 minutes of data loss is acceptable", "Service can be down for 15 minutes, and up to 4 hours of data loss is acceptable", "Both values describe the maximum downtime", "Both values describe the maximum acceptable data loss"],
+    "answer": 0,
+    "explain": "RTO 是恢復服務的時間上限;RPO 是可容忍的資料遺失時間窗。",
+    "why": ["正確。", "把兩者顛倒。", "RPO 不是停機時間。", "RTO 不是資料遺失量。"],
+    "tags": ["rto", "rpo"], "source": []
+  }
+]

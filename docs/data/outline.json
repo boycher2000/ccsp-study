@@ -1,0 +1,112 @@
+{
+  "source": "ISC2 CCSP Certification Exam Outline, effective August 1, 2026 (topic names condensed; see the official PDF for the authoritative wording)",
+  "exam": { "format": "CAT", "items": "100-150", "hours": 3, "passing": "700/1000" },
+  "domains": [
+    {
+      "id": 1, "weight": 17, "title": "Cloud Concepts, Architecture and Design", "zh": "雲端概念、架構與設計",
+      "topics": [
+        { "id": "1.1", "title": "Understand cloud computing concepts", "zh": "理解雲端運算概念",
+          "bullets": ["Cloud computing definitions", "Roles and responsibilities (customer, CSP, partner, broker, regulator)", "Essential characteristics (on-demand self-service, broad network access, multi-tenancy, rapid elasticity and scalability, resource pooling, measured service)", "Building block technologies (virtualization, storage, networking, databases, orchestration)"] },
+        { "id": "1.2", "title": "Describe cloud reference architecture", "zh": "描述雲端參考架構",
+          "bullets": ["Cloud computing activities", "Cloud service capabilities (application, platform, infrastructure capability types)", "Cloud service categories (SaaS, PaaS, IaaS)", "Cloud deployment models (public, private, hybrid, community, multi-cloud)", "Cloud shared considerations (interoperability, portability, reversibility, availability, security, privacy, resiliency, performance, governance, maintenance and versioning, SLA, auditability, regulatory, outsourcing)", "Impact of related technologies (data science, ML, AI, blockchain, IoT, containers, quantum, edge, confidential computing)"] },
+        { "id": "1.3", "title": "Understand security concepts relevant to cloud computing", "zh": "理解與雲端相關的安全概念",
+          "bullets": ["Cryptography and key management", "Identity and access control (user, privilege, service access)", "Data and media sanitization (overwriting, cryptographic erase)", "Network security (network security groups, traffic inspection, geofencing)", "Virtualization security (hypervisor, container, ephemeral computing, serverless, isolation)", "Common cloud threats", "Security hygiene (patching, baselining, immutable architecture, hardening)"] },
+        { "id": "1.4", "title": "Understand design principles of secure cloud computing", "zh": "理解安全雲端設計原則",
+          "bullets": ["Cloud secure data lifecycle", "Cloud-based BC and DR planning", "Business impact analysis (CBA, ROI)", "Functional security requirements (portability, interoperability, vendor lock-in)", "Security considerations and responsibilities per SaaS, IaaS, PaaS", "Cloud design patterns (SANS principles, Well-Architected Framework, CSA Enterprise Architecture, secure by design)", "DevOps security"] },
+        { "id": "1.5", "title": "Evaluate Cloud Service Providers (CSP)", "zh": "評估雲端服務供應商",
+          "bullets": ["Verification against criteria", "System/subsystem product certifications (Common Criteria, FIPS 140-2)"] },
+        { "id": "1.6", "title": "Comprehend Artificial Intelligence (AI)/Machine Learning (ML)", "zh": "理解 AI/ML",
+          "bullets": ["Cloud threat detection and analysis", "Data source validation and verification", "Security Orchestration, Automation and Response (SOAR)", "Ethical concerns", "Regulatory requirements"] }
+      ]
+    },
+    {
+      "id": 2, "weight": 20, "title": "Cloud Data Security", "zh": "雲端資料安全",
+      "topics": [
+        { "id": "2.1", "title": "Describe cloud data concepts", "zh": "描述雲端資料概念",
+          "bullets": ["Cloud data lifecycle phases", "Data dispersion", "Data flows"] },
+        { "id": "2.2", "title": "Design and implement cloud data storage architectures", "zh": "設計與實作雲端資料儲存架構",
+          "bullets": ["Storage types (long-term, ephemeral, raw, object, volume)", "Threats to storage types"] },
+        { "id": "2.3", "title": "Design and apply data security technologies and strategies", "zh": "設計與應用資料安全技術與策略",
+          "bullets": ["Encryption and key management", "Hashing (data integrity, non-repudiation)", "Data obfuscation (masking, anonymization)", "Tokenization", "Data Loss Prevention (DLP)", "Keys, secrets and certificates management"] },
+        { "id": "2.4", "title": "Implement data discovery", "zh": "實作資料探索",
+          "bullets": ["Structured data", "Unstructured data", "Semi-structured data", "Data location"] },
+        { "id": "2.5", "title": "Plan and implement data classification", "zh": "規劃與實作資料分類",
+          "bullets": ["Data classification policies", "Data mapping", "Data labeling and tagging"] },
+        { "id": "2.6", "title": "Design and implement Information Rights Management (IRM)", "zh": "設計與實作資訊權限管理",
+          "bullets": ["Objectives (data rights, provisioning, access models)", "Appropriate tools (issuing and revocation of certificates)"] },
+        { "id": "2.7", "title": "Plan and implement data retention, deletion and archiving policies", "zh": "規劃與實作資料保存、刪除與封存政策",
+          "bullets": ["Data retention policies", "Data deletion procedures and mechanisms", "Data archiving procedures and mechanisms", "Legal hold (authorized access, deletion prevention)"] },
+        { "id": "2.8", "title": "Design and implement auditability, traceability and accountability of data events", "zh": "設計與實作資料事件的可稽核性、可追溯性與問責",
+          "bullets": ["Event sources and event attributes (identity, IP address, geolocation)", "Logging, storage and analysis of data events", "Chain of custody and non-repudiation"] },
+        { "id": "2.9", "title": "Comprehend data protection of AI and ML data", "zh": "理解 AI/ML 資料保護",
+          "bullets": ["Data set and model privacy", "Data set and model security (validation, verification)"] }
+      ]
+    },
+    {
+      "id": 3, "weight": 17, "title": "Cloud Platform and Infrastructure Security", "zh": "雲端平台與基礎設施安全",
+      "topics": [
+        { "id": "3.1", "title": "Comprehend cloud infrastructure components", "zh": "理解雲端基礎設施元件",
+          "bullets": ["Physical environment", "Network and communications", "Compute", "Virtualization", "Storage", "Management plane"] },
+        { "id": "3.2", "title": "Design a secure data center", "zh": "設計安全的資料中心",
+          "bullets": ["Logical design (tenant partitioning, access control)", "Physical design (location, buy or build)", "Environmental design (HVAC, multi-vendor pathway connectivity)", "Design resilience (power, HVAC, connectivity)"] },
+        { "id": "3.3", "title": "Analyze risks associated with cloud infrastructure and platforms", "zh": "分析雲端基礎設施與平台風險",
+          "bullets": ["Risk assessment (identification, analysis)", "Cloud vulnerabilities, threats and attacks", "Risk treatment strategies"] },
+        { "id": "3.4", "title": "Plan and implementation of security controls", "zh": "規劃與實作安全控制",
+          "bullets": ["Physical and environmental protection", "System, storage and communication protection", "Identification, authentication and authorization in cloud environments", "Audit mechanisms (log collection, correlation, packet capture)"] },
+        { "id": "3.5", "title": "Plan Business Continuity (BC) and Disaster Recovery (DR)", "zh": "規劃營運持續與災難復原",
+          "bullets": ["BC/DR strategy", "Business requirements (RTO, RPO, recovery service level)", "Creation, implementation and testing of plan"] }
+      ]
+    },
+    {
+      "id": 4, "weight": 16, "title": "Cloud Application Security", "zh": "雲端應用程式安全",
+      "topics": [
+        { "id": "4.1", "title": "Advocate training and awareness for application security", "zh": "倡導應用程式安全訓練與意識",
+          "bullets": ["Cloud development basics", "Common pitfalls", "Common cloud vulnerabilities (OWASP Top 10, ASVS, API Top 10, Top 10 for LLM Applications, SANS Top 25)"] },
+        { "id": "4.2", "title": "Describe the Secure Software Development Life Cycle (SDLC) process", "zh": "描述安全軟體開發生命週期",
+          "bullets": ["Business requirements", "Phases and methodologies (design, code, test, maintain, waterfall vs agile)"] },
+        { "id": "4.3", "title": "Apply the Secure SDLC", "zh": "應用安全 SDLC",
+          "bullets": ["Cloud-specific risks (shared technology, CSP insider threats, lack of visibility and control, legal and jurisdiction issues)", "Threat modeling (STRIDE, DREAD, ATASM, PASTA)", "Avoid common vulnerabilities during development", "Secure coding (OWASP ASVS, SAFECode)", "Software configuration management and versioning"] },
+        { "id": "4.4", "title": "Apply cloud software assurance and validation", "zh": "應用雲端軟體保證與驗證",
+          "bullets": ["Functional and non-functional testing (CI/CD)", "Security testing methodologies (blackbox, whitebox, SCA, IAST, SAST, DAST)", "Quality assurance", "Abuse case testing"] },
+        { "id": "4.5", "title": "Use verified secure software", "zh": "使用經驗證的安全軟體",
+          "bullets": ["Securing APIs", "Supply-chain management (vendor assessment, integrity, authenticity, licensing)", "Third-party software management", "Validated open-source software"] },
+        { "id": "4.6", "title": "Comprehend and apply the specifics of cloud application architecture", "zh": "理解並應用雲端應用架構特性",
+          "bullets": ["Supplemental security components (WAF, DAM, XML firewalls, API gateway, load balancer)", "Cryptography", "Sandboxing", "Application virtualization and orchestration (microservices, containers, Docker, Kubernetes)"] },
+        { "id": "4.7", "title": "Design appropriate Identity and Access Management (IAM) solutions", "zh": "設計適當的 IAM 解決方案",
+          "bullets": ["Federated identity", "Identity Providers (IdP)", "Single Sign-On (SSO)", "Multi-Factor Authentication (MFA)", "Cloud Access Security Broker (CASB)", "Secrets, key and certificate management"] }
+      ]
+    },
+    {
+      "id": 5, "weight": 17, "title": "Cloud Security Operations", "zh": "雲端安全營運",
+      "topics": [
+        { "id": "5.1", "title": "Build and implement physical and logical infrastructure for cloud environment", "zh": "建置雲端環境的實體與邏輯基礎設施",
+          "bullets": ["Hardware-specific security configuration (HSM, TPM)", "Secure by default", "Installation and configuration of management plane tools", "Virtual hardware security configuration (network, storage, memory, CPU, hypervisor type 1 and 2)", "Installation of guest OS virtualization toolsets"] },
+        { "id": "5.2", "title": "Operate and maintain physical and logical infrastructure for cloud environment", "zh": "維運雲端環境的實體與邏輯基礎設施",
+          "bullets": ["Access controls for local and remote access (RDP, SSH, console, jumpboxes, virtual client, SSO)", "Secure network configuration (VLAN, TLS, DHCP, DNSSEC, VPN)", "Network security controls (firewalls, IDS, IPS, honeypots, vulnerability assessments, NSG, bastion host, segmentation)", "OS hardening through baselines, monitoring and remediation", "Patch management", "Availability of clustered hosts (DRS, dynamic optimization, storage clusters, maintenance mode, HA)", "Availability of guest OS", "Performance and capacity monitoring", "Hardware monitoring", "Host and guest OS backup and restore", "Management plane (scheduling, orchestration, maintenance)"] },
+        { "id": "5.3", "title": "Implement operational controls and standards", "zh": "實作營運控制與標準",
+          "bullets": ["Frameworks: NIST, ISO, HIPAA, COBIT, CIS Controls, COSO, ITIL, ISO/IEC 20000-1", "Change management", "Continuity management", "Information security management", "Continual service improvement management", "Incident management", "Problem management", "Release management", "Deployment management", "Configuration management", "Service-level management", "Availability management", "Capacity management"] },
+        { "id": "5.4", "title": "Support digital forensics", "zh": "支援數位鑑識",
+          "bullets": ["Forensic data collection methodologies", "Evidence management", "Collecting, acquiring and preserving digital evidence"] },
+        { "id": "5.5", "title": "Manage communication with relevant parties", "zh": "管理與相關方的溝通",
+          "bullets": ["Vendors", "Customers", "Partners", "Regulators", "Other stakeholders"] },
+        { "id": "5.6", "title": "Manage security operations", "zh": "管理安全營運",
+          "bullets": ["Security Operations Center (SOC)", "Intelligent monitoring of security controls (firewalls, IDS, IPS, honeypots, NSG, AI)", "Log capture and analysis (SIEM, log management, threat intelligence)", "Incident response", "Vulnerability assessments", "Penetration testing"] }
+      ]
+    },
+    {
+      "id": 6, "weight": 13, "title": "Legal, Risk and Compliance", "zh": "法律、風險與合規",
+      "topics": [
+        { "id": "6.1", "title": "Articulate legal requirements and unique risks within the cloud environment", "zh": "闡述雲端環境的法律要求與特有風險",
+          "bullets": ["Conflicting international legislation", "Evaluation of legal risks specific to cloud computing", "Legal and regulatory frameworks and guidelines", "eDiscovery (ISO/IEC 27050, CSA guidance)", "Forensics requirements (CSA, ISO/IEC 27037, 27041, 27042, 27043)"] },
+        { "id": "6.2", "title": "Understand privacy requirements", "zh": "理解隱私要求",
+          "bullets": ["Contractual vs regulated private data (PHI, PII)", "Country-specific legislation (FERPA, PIPEDA, GDPR, HIPAA, India DPDP Act)", "Jurisdictional differences in data privacy", "Standard privacy requirements (ISO/IEC 27018, GAPP, GDPR)", "Privacy Impact Assessments (PIA)"] },
+        { "id": "6.3", "title": "Understand audit processes, methodologies, and required adaptations for a cloud environment", "zh": "理解稽核流程、方法與雲端調整",
+          "bullets": ["Internal and external audit controls", "Impact of audit requirements", "Assurance challenges of virtualization and cloud", "Types of audit reports (SSAE, SOC, ISAE)", "Restrictions of audit scope statements", "Gap analysis", "Audit planning", "Internal ISMS", "Internal information security controls system", "Policies", "Identification and involvement of stakeholders", "Specialized compliance for highly regulated industries (NERC CIP, HIPAA, HITECH, PCI)", "Impact of distributed IT model"] },
+        { "id": "6.4", "title": "Understand implications of cloud to enterprise risk management", "zh": "理解雲端對企業風險管理的影響",
+          "bullets": ["Assess providers' risk management programs", "Data roles (owner, controller, custodian, processor, steward)", "Regulatory transparency requirements (breach notification, SOX, GDPR)", "Risk treatment (avoid, mitigate, transfer, share, accept)", "Different risk frameworks", "Metrics for risk management", "Assessment of risk environment (service, vendor, infrastructure, business)"] },
+        { "id": "6.5", "title": "Understand outsourcing and cloud contract design", "zh": "理解外包與雲端合約設計",
+          "bullets": ["Business requirements (SLA, MSA, SOW)", "Vendor management (assessments, lock-in, viability, escrow)", "Contract management (right to audit, metrics, definitions, termination, litigation, assurance, compliance, access to cloud/data, cyber risk insurance, data ownership, security requirements)", "Supply-chain management (ISO/IEC 27036)"] }
+      ]
+    }
+  ]
+}

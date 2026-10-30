@@ -1,0 +1,83 @@
+[
+  {
+    "id": "D2-2.1-001", "domain": 2, "topic": "2.1", "difficulty": 1, "status": "draft",
+    "stem": "A cloud application exports customer records to a partner's system through an API. In which phase of the cloud data lifecycle does this occur?",
+    "options": ["Use", "Share", "Store", "Archive"],
+    "answer": 1,
+    "explain": "把資料提供給其他使用者或第三方屬於 Share 階段,重點是授權與傳輸保護。",
+    "why": ["Use 是在系統內處理或檢視資料。", "正確。資料被分享給合作夥伴。", "Store 是資料被存放。", "Archive 是長期保存。"],
+    "tags": ["data-lifecycle"], "source": ["CSA Security Guidance"]
+  },
+  {
+    "id": "D2-2.2-001", "domain": 2, "topic": "2.2", "difficulty": 1, "status": "draft",
+    "stem": "Which threat is MOST commonly associated with cloud object storage?",
+    "options": ["Misconfigured access permissions exposing data publicly", "Hypervisor escape", "Physical theft of disks from the data center", "CPU cache side-channel attacks"],
+    "answer": 0,
+    "explain": "物件儲存最常見的問題是權限或公開設定錯誤。其他選項屬於較少見的底層或實體威脅。",
+    "why": ["正確。公開 bucket、過寬政策最常見。", "hypervisor 逃逸與儲存類型無直接關聯。", "實體竊盜由 CSP 防護,且資料通常已加密。", "側通道是運算層威脅。"],
+    "tags": ["storage", "threats"], "source": []
+  },
+  {
+    "id": "D2-2.3-001", "domain": 2, "topic": "2.3", "difficulty": 2, "status": "draft",
+    "stem": "A payment application must reduce the number of systems that store real card numbers, while still allowing authorized processes to retrieve the original value. Which technique BEST meets this requirement?",
+    "options": ["Hashing", "Tokenization", "Static data masking", "Anonymization"],
+    "answer": 1,
+    "explain": "Tokenization 以 token 取代敏感值,原值存在 token vault,授權流程可取回,常用於縮小 PCI DSS 範圍。",
+    "why": ["雜湊不可逆,無法取回原值。", "正確。", "靜態遮罩產生不可還原的資料,用於測試環境。", "匿名化不可逆,無法取回。"],
+    "tags": ["tokenization", "pci"], "source": ["PCI SSC tokenization guidelines"]
+  },
+  {
+    "id": "D2-2.4-001", "domain": 2, "topic": "2.4", "difficulty": 1, "status": "draft",
+    "stem": "A data discovery scan finds many JSON and XML files with inconsistent fields stored in a cloud bucket. How should this data be categorized?",
+    "options": ["Structured data", "Semi-structured data", "Unstructured data", "Raw data"],
+    "answer": 1,
+    "explain": "JSON、XML 有標籤或鍵值但綱要彈性,屬半結構化資料。",
+    "why": ["結構化資料有固定綱要,如關聯式資料庫。", "正確。", "非結構化如文件、影像,沒有內建的欄位結構。", "raw 是儲存類型,不是此處的資料結構分類。"],
+    "tags": ["data-discovery"], "source": []
+  },
+  {
+    "id": "D2-2.5-001", "domain": 2, "topic": "2.5", "difficulty": 1, "status": "draft",
+    "stem": "Who is ultimately responsible for deciding the classification level of a data set?",
+    "options": ["The data custodian", "The data owner", "The cloud service provider", "The security analyst"],
+    "answer": 1,
+    "explain": "資料擁有者對分類與使用負責;custodian 依分類執行保護。",
+    "why": ["custodian 執行保護,不決定分類。", "正確。", "CSP 不決定客戶資料的分類。", "分析師執行,不負責決定。"],
+    "tags": ["classification", "roles"], "source": []
+  },
+  {
+    "id": "D2-2.6-001", "domain": 2, "topic": "2.6", "difficulty": 2, "status": "draft",
+    "stem": "A company shares a confidential document with a partner and needs to be able to revoke the partner's ability to open it even after the file has been downloaded. Which technology provides this capability?",
+    "options": ["Data loss prevention (DLP)", "Information rights management (IRM)", "Tokenization", "Hashing"],
+    "answer": 1,
+    "explain": "IRM 讓權限隨檔案走,可在檔案被下載後撤銷;DLP 負責偵測與阻擋外流。",
+    "why": ["DLP 偵測與阻擋外流,無法在檔案已離開後撤銷開啟權。", "正確。", "tokenization 取代欄位值,不是文件權限控制。", "雜湊只確認完整性。"],
+    "tags": ["irm", "dlp"], "source": []
+  },
+  {
+    "id": "D2-2.7-001", "domain": 2, "topic": "2.7", "difficulty": 3, "status": "draft",
+    "stem": "A legal hold has been issued for a department's cloud records. The retention schedule would delete some of those records next week, and a data subject has also requested erasure. What should the organization do?",
+    "options": ["Delete the records according to the retention schedule", "Honor the erasure request first, then notify legal", "Suspend deletion of records in scope of the hold, restrict access, and document the conflict with legal counsel", "Move the records to a cheaper archive tier and delete them after 30 days"],
+    "answer": 2,
+    "explain": "法律保全的範圍內,到期刪除與一般刪除請求都應暫停,限制存取並記錄決策,由法務處理與隱私要求的衝突。",
+    "why": ["到期刪除會破壞證據,可能違法。", "先刪除就無法挽回,應先確認保全義務。", "正確。", "改變儲存層級不改變刪除義務,且仍會刪除。"],
+    "tags": ["legal-hold", "retention"], "source": []
+  },
+  {
+    "id": "D2-2.8-001", "domain": 2, "topic": "2.8", "difficulty": 2, "status": "draft",
+    "stem": "Which combination BEST supports non-repudiation of administrative actions in a cloud environment?",
+    "options": ["Unique user identities, tamper-evident logs, and trusted timestamps", "A shared administrator account with local logs and NTP", "Encrypted backups only", "Multi-factor authentication only"],
+    "answer": 0,
+    "explain": "不可否認性需要把行為綁定到唯一身分、記錄不可竄改、時間可信。",
+    "why": ["正確。", "共用帳號無法追溯到個人。", "備份加密不處理行為歸屬。", "MFA 只加強驗證,不保證記錄不被否認。"],
+    "tags": ["non-repudiation", "logging"], "source": []
+  },
+  {
+    "id": "D2-2.9-001", "domain": 2, "topic": "2.9", "difficulty": 3, "status": "draft",
+    "stem": "A team trains a machine learning model on customer records. Which control BEST reduces the risk that an attacker can determine whether a specific individual's record was in the training set?",
+    "options": ["Increase the model's accuracy", "Apply differential privacy and minimize the personal data used for training", "Encrypt the model file at rest", "Add more training data from the same source"],
+    "answer": 1,
+    "explain": "這是成員推論攻擊(membership inference)。差分隱私與資料最小化降低模型洩漏個別資料的風險。",
+    "why": ["準確度提高可能增加記憶訓練資料的風險。", "正確。", "靜態加密保護檔案,不影響查詢時的推論洩漏。", "更多同源資料不能解決洩漏問題。"],
+    "tags": ["ai-ml", "privacy"], "source": []
+  }
+]

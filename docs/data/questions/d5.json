@@ -1,0 +1,56 @@
+[
+  {
+    "id": "D5-5.1-001", "domain": 5, "topic": "5.1", "difficulty": 1, "status": "draft",
+    "stem": "Which hardware component provides tamper-resistant generation and storage of cryptographic keys and is commonly shared by many servers over the network?",
+    "options": ["Trusted Platform Module (TPM)", "Hardware Security Module (HSM)", "A smart card", "The system BIOS"],
+    "answer": 1,
+    "explain": "HSM 是專用、防竄改的密碼設備,可服務多個系統;TPM 是單一裝置內的晶片。",
+    "why": ["TPM 綁定單一裝置。", "正確。", "智慧卡主要用於使用者驗證。", "BIOS 不是金鑰保管設備。"],
+    "tags": ["hsm", "tpm"], "source": []
+  },
+  {
+    "id": "D5-5.2-001", "domain": 5, "topic": "5.2", "difficulty": 1, "status": "draft",
+    "stem": "An administrator needs remote access to production servers in a private subnet. Which approach is MOST secure?",
+    "options": ["Expose RDP directly to the internet", "Use a hardened bastion host with multi-factor authentication and session logging", "Share a common administrator password", "Use Telnet inside the virtual network"],
+    "answer": 1,
+    "explain": "經由強化的跳板機(bastion host),搭配 MFA 與連線記錄,縮小暴露面並保留稽核軌跡。",
+    "why": ["直接暴露 RDP 風險極高。", "正確。", "共用密碼破壞問責。", "Telnet 明文傳輸。"],
+    "tags": ["bastion", "remote-access"], "source": []
+  },
+  {
+    "id": "D5-5.3-001", "domain": 5, "topic": "5.3", "difficulty": 1, "status": "draft",
+    "stem": "A customer-facing web application is unavailable. The service desk's priority is to restore service as quickly as possible, even if using a workaround. Which ITIL process is this?",
+    "options": ["Incident management", "Problem management", "Change management", "Release management"],
+    "answer": 0,
+    "explain": "事件管理的目標是盡快恢復服務;問題管理才負責找根因。",
+    "why": ["正確。", "problem management 找出根本原因,防止再發生。", "change management 管理變更的審核與實施。", "release management 管理發布內容與時程。"],
+    "tags": ["itil", "incident-vs-problem"], "source": []
+  },
+  {
+    "id": "D5-5.4-001", "domain": 5, "topic": "5.4", "difficulty": 2, "status": "draft",
+    "stem": "During a cloud investigation, which evidence should be collected FIRST according to the order of volatility?",
+    "options": ["Archived backups", "A full disk image", "Memory contents", "A physical network diagram"],
+    "answer": 2,
+    "explain": "越易揮發的先收集:記憶體比磁碟易消失,磁碟比封存媒體易消失。雲端可用快照保存狀態。",
+    "why": ["封存備份最穩定。", "磁碟比記憶體穩定。", "正確。", "拓樸圖屬穩定資訊。"],
+    "tags": ["forensics", "volatility"], "source": ["RFC 3227"]
+  },
+  {
+    "id": "D5-5.5-001", "domain": 5, "topic": "5.5", "difficulty": 2, "status": "draft",
+    "stem": "A cloud provider acting as a processor discovers a breach affecting personal data of EU data subjects that it processes on behalf of a customer. Under the GDPR, whom must the processor notify first?",
+    "options": ["The supervisory authority, within 72 hours", "The controller, without undue delay", "The data subjects, within 24 hours", "No one, unless the controller asks"],
+    "answer": 1,
+    "explain": "GDPR 第 33 條:處理者應不得無故延遲地通知控制者;控制者再依規定通報監管機關(72 小時)。",
+    "why": ["72 小時是控制者對監管機關的通報時限。", "正確。", "通知當事人由控制者依風險決定,並無固定 24 小時規定。", "處理者有通知義務。"],
+    "tags": ["gdpr", "breach-notification"], "source": ["GDPR Art. 33"]
+  },
+  {
+    "id": "D5-5.6-001", "domain": 5, "topic": "5.6", "difficulty": 1, "status": "draft",
+    "stem": "Which security activity actively exploits identified vulnerabilities to demonstrate their impact and requires written authorization and rules of engagement?",
+    "options": ["Vulnerability assessment", "Penetration testing", "Log review", "Patch management"],
+    "answer": 1,
+    "explain": "滲透測試會實際利用弱點,必須有書面授權與交戰規則,並遵守 CSP 的測試政策。",
+    "why": ["弱點評估找出並排序弱點,不利用。", "正確。", "記錄檢視是被動分析。", "修補是修復活動。"],
+    "tags": ["pentest", "vulnerability-assessment"], "source": []
+  }
+]

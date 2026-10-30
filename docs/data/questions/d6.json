@@ -1,0 +1,47 @@
+[
+  {
+    "id": "D6-6.1-001", "domain": 6, "topic": "6.1", "difficulty": 1, "status": "draft",
+    "stem": "Which ISO/IEC standard provides guidance on electronic discovery (eDiscovery)?",
+    "options": ["ISO/IEC 27037", "ISO/IEC 27050", "ISO/IEC 27018", "ISO/IEC 27036"],
+    "answer": 1,
+    "explain": "ISO/IEC 27050 是電子探索系列。27037 針對數位證據的識別、收集、取得與保存。",
+    "why": ["27037 是證據處理指引,不是 eDiscovery 系列。", "正確。", "27018 是公有雲中 PII 保護。", "27036 是供應商關係的資訊安全。"],
+    "tags": ["ediscovery", "iso"], "source": ["ISO/IEC 27050"]
+  },
+  {
+    "id": "D6-6.2-001", "domain": 6, "topic": "6.2", "difficulty": 1, "status": "draft",
+    "stem": "A public cloud provider processes personal data on behalf of its customers. Which standard provides a code of practice for protecting personally identifiable information (PII) in this role?",
+    "options": ["ISO/IEC 27001", "ISO/IEC 27017", "ISO/IEC 27018", "ISO/IEC 27050"],
+    "answer": 2,
+    "explain": "ISO/IEC 27018 針對公有雲供應商作為 PII 處理者的保護。27017 是雲端安全控制指引。",
+    "why": ["27001 是 ISMS 要求。", "27017 針對雲端服務的資訊安全控制。", "正確。", "27050 是電子探索。"],
+    "tags": ["privacy", "iso-27018"], "source": ["ISO/IEC 27018"]
+  },
+  {
+    "id": "D6-6.3-001", "domain": 6, "topic": "6.3", "difficulty": 2, "status": "draft",
+    "stem": "A customer needs detailed assurance that a provider's security controls operated effectively over a six-month period. Which report is MOST appropriate?",
+    "options": ["SOC 1 Type I", "SOC 2 Type II", "SOC 3", "SOC 2 Type I"],
+    "answer": 1,
+    "explain": "要驗證「一段期間內控制持續有效運作」需要 Type II;SOC 2 對應安全性等 Trust Services Criteria。",
+    "why": ["SOC 1 針對財報內部控制,Type I 只看某一時點。", "正確。", "SOC 3 是公開摘要,細節不足。", "Type I 只說明某一時點的設計。"],
+    "tags": ["soc", "audit"], "source": []
+  },
+  {
+    "id": "D6-6.4-001", "domain": 6, "topic": "6.4", "difficulty": 1, "status": "draft",
+    "stem": "Under the GDPR, which role determines the purposes and means of processing personal data?",
+    "options": ["Processor", "Controller", "Custodian", "Data steward"],
+    "answer": 1,
+    "explain": "Controller 決定處理的目的與方式;processor 依控制者的指示處理。",
+    "why": ["processor 依指示處理。", "正確。", "custodian 負責日常保護,是資料治理角色。", "steward 負責資料品質與定義。"],
+    "tags": ["data-roles", "gdpr"], "source": ["GDPR Art. 4"]
+  },
+  {
+    "id": "D6-6.5-001", "domain": 6, "topic": "6.5", "difficulty": 2, "status": "draft",
+    "stem": "A customer wants to ensure it can retrieve its data and have the provider securely delete it when a cloud contract ends. Which contract provision is MOST relevant?",
+    "options": ["Service credits for downtime", "Termination assistance with data return and secure deletion", "Force majeure", "Indemnification for third-party claims"],
+    "answer": 1,
+    "explain": "終止協助、資料返還與安全刪除條款,直接處理合約結束時的資料取回與清除。",
+    "why": ["服務點數處理 SLA 未達標的補償。", "正確。", "不可抗力免除特定情況下的責任。", "賠償條款處理第三方求償。"],
+    "tags": ["contracts", "exit"], "source": []
+  }
+]

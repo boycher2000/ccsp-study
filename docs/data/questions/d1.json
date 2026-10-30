@@ -1,0 +1,56 @@
+[
+  {
+    "id": "D1-1.1-001", "domain": 1, "topic": "1.1", "difficulty": 1, "status": "draft",
+    "stem": "A company buys cloud services through a third party that combines offerings from several cloud providers behind a single interface and negotiates pricing on the company's behalf. Which cloud role BEST describes this third party?",
+    "options": ["Cloud service broker", "Regulator", "Cloud auditor", "Cloud service customer"],
+    "answer": 0,
+    "explain": "整合多家服務、提供單一介面並代為議價,是 broker 的 aggregation 與 intermediation 功能。",
+    "why": ["正確。broker 提供加值仲介、整合與在多家之間挑選。", "regulator 是監管單位,不提供服務。", "auditor 是獨立評估控制措施的夥伴角色。", "customer 是使用服務的一方,題目中的第三方是在中間提供服務。"],
+    "tags": ["roles", "broker"], "source": ["NIST SP 800-145", "ISO/IEC 17788/17789"]
+  },
+  {
+    "id": "D1-1.2-001", "domain": 1, "topic": "1.2", "difficulty": 2, "status": "draft",
+    "stem": "A customer wants to be sure that, when the contract ends, it can retrieve all of its data and application artefacts from the provider and that the provider will delete them. Which cloud shared consideration does this describe?",
+    "options": ["Portability", "Interoperability", "Reversibility", "Resiliency"],
+    "answer": 2,
+    "explain": "Reversibility 指客戶終止服務時取回資料與應用成品,並由供應商清除。portability 是在不同環境間搬移的難易度。",
+    "why": ["portability 關心搬移到別家的難易度,不包含供應商刪除。", "interoperability 是不同系統能一起運作。", "正確。reversibility 涵蓋取回與清除。", "resiliency 是承受並從故障中恢復的能力。"],
+    "tags": ["shared-considerations"], "source": ["ISO/IEC 17788"]
+  },
+  {
+    "id": "D1-1.3-001", "domain": 1, "topic": "1.3", "difficulty": 2, "status": "draft",
+    "stem": "Customers of a multi-tenant public cloud cannot physically destroy storage media. Data in a customer's volumes was encrypted with keys the customer controls. Which method is MOST appropriate to sanitize the data at the end of its life?",
+    "options": ["Degaussing the underlying disks", "Cryptographic erase by securely destroying all copies of the keys", "Quick-formatting the volumes", "Deleting the volume reference in the console"],
+    "answer": 1,
+    "explain": "客戶無法接觸實體媒體時,首選加密抹除:銷毀金鑰(含所有副本),密文即無法還原。",
+    "why": ["客戶無法接觸磁碟,且消磁對 SSD 不可靠。", "正確。前提是金鑰沒有其他副本。", "快速格式化不會移除資料。", "刪除參照不等於清除資料,可能殘留。"],
+    "tags": ["sanitization", "crypto-erase"], "source": ["NIST SP 800-88 (revision to be confirmed)"]
+  },
+  {
+    "id": "D1-1.4-001", "domain": 1, "topic": "1.4", "difficulty": 1, "status": "draft",
+    "stem": "Under the shared responsibility model, which responsibility remains with the customer in ALL service models (IaaS, PaaS and SaaS)?",
+    "options": ["Physical security of the data center", "Patching the hypervisor", "Classification and governance of the customer's own data", "Maintaining the provider's network backbone"],
+    "answer": 2,
+    "explain": "不論 IaaS、PaaS、SaaS,客戶對自己的資料(分類、治理、存取)都保有責任。",
+    "why": ["實體安全由 CSP 負責。", "hypervisor 由 CSP 管理。", "正確。資料與身分永遠是客戶責任。", "骨幹網路屬 CSP。"],
+    "tags": ["shared-responsibility"], "source": ["CSA Security Guidance"]
+  },
+  {
+    "id": "D1-1.5-001", "domain": 1, "topic": "1.5", "difficulty": 2, "status": "draft",
+    "stem": "A provider presents a Common Criteria certificate for the hypervisor product used in its service. What should the customer verify FIRST before relying on it?",
+    "options": ["That the certificate shows a FIPS 140 level", "That the evaluated configuration and scope match the service actually being purchased", "That the evaluation assurance level is EAL7", "That the provider also holds ISO/IEC 27001 certification"],
+    "answer": 1,
+    "explain": "Common Criteria 評估的是特定產品與特定組態(TOE)。第一步是確認評估範圍是否對應實際購買的服務。",
+    "why": ["FIPS 140 是密碼模組驗證,與 CC 證書是不同機制。", "正確。範圍與組態不符,證書就不能作為證據。", "並非越高越適合,要看需求。EAL7 也不常見。", "這是另一份獨立的證據,不是驗證 CC 證書適用性的第一步。"],
+    "tags": ["common-criteria", "certifications"], "source": ["ISO/IEC 15408"]
+  },
+  {
+    "id": "D1-1.6-001", "domain": 1, "topic": "1.6", "difficulty": 2, "status": "draft",
+    "stem": "A security operations team plans to use a machine learning model to detect anomalous activity in cloud logs. Which activity should come FIRST to avoid unreliable detections?",
+    "options": ["Enable fully automatic blocking of flagged accounts", "Validate and verify the integrity and quality of the log data sources feeding the model", "Publish the model's results to regulators", "Extend log retention to ten years"],
+    "answer": 1,
+    "explain": "模型品質取決於輸入資料,先驗證資料來源的完整性與品質。高衝擊的自動封鎖應在驗證後並保留人工審核。",
+    "why": ["尚未驗證就自動處置,誤報會直接造成營運影響。", "正確。資料不可信,偵測結果就不可信。", "與偵測可靠度無關。", "保留期限是另一議題,不會提高偵測品質。"],
+    "tags": ["ai-ml", "data-validation"], "source": []
+  }
+]

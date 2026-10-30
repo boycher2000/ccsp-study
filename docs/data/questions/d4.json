@@ -1,0 +1,65 @@
+[
+  {
+    "id": "D4-4.1-001", "domain": 4, "topic": "4.1", "difficulty": 1, "status": "draft",
+    "stem": "Which resource is a verification standard that defines levels of security requirements used to design, build and test secure web applications?",
+    "options": ["OWASP Application Security Verification Standard (ASVS)", "STRIDE", "PASTA", "SAST"],
+    "answer": 0,
+    "explain": "ASVS 是分等級的應用程式安全驗證標準。STRIDE、PASTA 是威脅建模方法,SAST 是測試技術。",
+    "why": ["正確。", "STRIDE 是威脅分類的建模方法。", "PASTA 是風險導向的威脅建模流程。", "SAST 是靜態程式碼分析技術。"],
+    "tags": ["owasp", "asvs"], "source": ["OWASP ASVS"]
+  },
+  {
+    "id": "D4-4.2-001", "domain": 4, "topic": "4.2", "difficulty": 1, "status": "draft",
+    "stem": "A team following a waterfall model discovers most security flaws during the testing phase, causing expensive rework. Which change would BEST reduce this problem?",
+    "options": ["Define security requirements and perform design reviews early in the lifecycle", "Hire more testers for the final phase", "Skip penetration testing to save time", "Release to production sooner and fix issues later"],
+    "answer": 0,
+    "explain": "把安全需求與設計審查往前移(shift-left),越早發現,修正成本越低。",
+    "why": ["正確。", "增加後期測試人力不解決問題發現太晚。", "跳過測試只會增加風險。", "把問題帶進生產環境成本更高。"],
+    "tags": ["sdlc", "shift-left"], "source": []
+  },
+  {
+    "id": "D4-4.3-001", "domain": 4, "topic": "4.3", "difficulty": 2, "status": "draft",
+    "stem": "Which threat modeling methodology is risk-centric and organizes the analysis into seven stages?",
+    "options": ["STRIDE", "DREAD", "PASTA", "ATASM"],
+    "answer": 2,
+    "explain": "PASTA(Process for Attack Simulation and Threat Analysis)是風險導向,共七個階段。",
+    "why": ["STRIDE 是六類威脅的分類方法。", "DREAD 是風險評分模型。", "正確。", "ATASM 的流程為 Architecture、Threats、Attack surfaces、Mitigations 四步。"],
+    "tags": ["threat-modeling"], "source": []
+  },
+  {
+    "id": "D4-4.4-001", "domain": 4, "topic": "4.4", "difficulty": 1, "status": "draft",
+    "stem": "Which security testing approach analyzes source code without executing the application and can run early in a CI/CD pipeline?",
+    "options": ["DAST", "SAST", "IAST", "Penetration testing"],
+    "answer": 1,
+    "explain": "SAST 靜態分析原始碼,不需執行應用,可在管線早期執行,但可能有誤報。",
+    "why": ["DAST 需要應用執行中。", "正確。", "IAST 需要在執行期以探針觀察。", "滲透測試針對執行中的系統。"],
+    "tags": ["sast", "testing"], "source": []
+  },
+  {
+    "id": "D4-4.5-001", "domain": 4, "topic": "4.5", "difficulty": 2, "status": "draft",
+    "stem": "A development team wants to use an open-source library from a public repository. Which action BEST validates its integrity and authenticity before use?",
+    "options": ["Choose the library with the most stars", "Verify the maintainer's signature or published hash and scan the dependency with software composition analysis (SCA)", "Always use the latest version tag", "Assume the cloud provider has vetted it"],
+    "answer": 1,
+    "explain": "完整性與真實性靠簽章或雜湊驗證;SCA 找出已知漏洞與授權風險。熱門程度不是安全證明。",
+    "why": ["星數不代表安全。", "正確。", "最新版不保證可信,也可能含新問題。", "CSP 不會替客戶審查所有第三方函式庫。"],
+    "tags": ["supply-chain", "sca"], "source": []
+  },
+  {
+    "id": "D4-4.6-001", "domain": 4, "topic": "4.6", "difficulty": 1, "status": "draft",
+    "stem": "Which component inspects HTTP traffic at layer 7 to block attacks such as SQL injection and cross-site scripting before they reach a web application?",
+    "options": ["Database activity monitoring (DAM)", "Web application firewall (WAF)", "Load balancer", "XML firewall"],
+    "answer": 1,
+    "explain": "WAF 在第 7 層檢查 HTTP 流量並阻擋常見網頁攻擊。",
+    "why": ["DAM 監控資料庫活動,不過濾 HTTP。", "正確。", "負載平衡器分流,不是主要的攻擊過濾工具。", "XML 防火牆針對 XML 流量。"],
+    "tags": ["waf"], "source": []
+  },
+  {
+    "id": "D4-4.7-001", "domain": 4, "topic": "4.7", "difficulty": 2, "status": "draft",
+    "stem": "A third-party application needs access to a user's calendar without learning the user's password, and the user should sign in through the company's identity provider. Which pairing is correct?",
+    "options": ["OAuth 2.0 for authentication, OpenID Connect for authorization", "OAuth 2.0 for delegated authorization, OpenID Connect for authentication", "OAuth 2.0 and OpenID Connect both for authorization only", "LDAP for both"],
+    "answer": 1,
+    "explain": "OAuth 2.0 是委派授權;OpenID Connect 建立在 OAuth 2.0 上,提供驗證(身分)。",
+    "why": ["把兩者顛倒。", "正確。", "OIDC 提供驗證,不只是授權。", "LDAP 是目錄存取協定,不能取代這兩者。"],
+    "tags": ["oauth", "oidc", "federation"], "source": []
+  }
+]

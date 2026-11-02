@@ -52,7 +52,7 @@
 - 情境裡要有一個**常見的錯誤直覺**(例如「有 MFA 就能追責」),讓答題者必須說明為什麼不對。
 - `key_points` 要能被客觀判斷,不要寫成「理解重要性」這種空話。
 - 不收錄考古題;不直接改寫他人公開的題目或情境。每個情境用自己的故事。
-- 檔案放在 `docs/data/questions/oN.json`(N 是 domain 編號)。`id` 格式:`D<domain>-<topic>-O<nn>`。
+- 檔案放在 `docs/data/private/questions/oN.json`(N 是 domain 編號),**這個資料夾被 git 忽略,不會公開**。`id` 格式:`D<domain>-<topic>-O<nn>`。新增檔案後執行 `python scripts/validate.py` 更新索引。
 - 新題先標 `draft`;用權威來源核對事實後才改 `reviewed` 或 `verified`。
 
 ### 作答方式(網站內建)
@@ -84,7 +84,7 @@
 
 ## 選擇題格式(舊題,維持現狀)
 
-### 欄位(`docs/data/questions/dN.json`)
+### 欄位(`docs/data/private/questions/dN.json`)
 
 ```json
 {
@@ -124,3 +124,10 @@
 2. 產生題目,每批不超過 50 題。
 3. 執行 `python scripts/validate.py`。
 4. 抽查解析與事實,用權威來源核對後把 `status` 改為 `verified` 並填 `source`。
+
+## 私人題庫與第三方題庫
+
+- 題庫在 `docs/data/private/questions/`(被 `.gitignore` 排除);原始資料放在 `private/`(同樣排除)。**不要把這兩個資料夾的內容貼進筆記、README 或任何會被提交的檔案。**
+- 參考第三方題庫(例如自己購買的練習題)時:**以概念為單位**改寫成開放式題目,合併考同一概念的題目,情境用全新的故事,不沿用原題的情境與選項措辭。
+- 第三方題庫的答案可能有誤:一律對照筆記與官方來源核對,不一致的標「待核對」。
+- 不處理或收錄看起來是「回憶的真實考題」的內容。

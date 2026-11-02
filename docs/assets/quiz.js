@@ -5,6 +5,7 @@
   var S = { outline: null, topics: {}, order: [], questions: [], byId: {} };
   var session = null;
   var PASS_RATIO = 0.7; // open-ended: share of key points covered that counts as "got it"
+  var COUNTS = [5, 10, 20, 30, 50]; // choices for the number of questions per round
 
   function record(q, correct) {
     var d = C.loadStore();
@@ -44,12 +45,21 @@
   function viewSetup(topicId) {
     var total = S.questions.length, nOpen = count("open"), nMcq = count("mcq");
     var drafts = S.questions.filter(function (q) { return q.status === "draft"; }).length;
+    if (!total) {
+      app.innerHTML = "<h1>刷題</h1>" +
+        '<div class="callout warn">這個網站上沒有題目。題庫是<strong>私人</strong>的,只存在本機的 <code>docs/data/private/questions/</code>,不會發布到網路上。<br>' +
+        "在自己的電腦用 <code>python -m http.server -d docs 8000</code> 開啟網站,就會載入你的題庫。</div>" +
+        '<p class="muted">想先讀觀念?到 <a href="../notes/">筆記入口</a>。</p>';
+      return;
+    }
     app.innerHTML = "<h1>刷題</h1>" +
       '<p class="muted">題庫 ' + total + " 題:開放式情境題 " + nOpen + " 題、選擇題 " + nMcq + " 題(目標 1000 題);其中 " + drafts +
       " 題為草稿,尚未用權威來源逐題核對。題數不足時,會用現有題目抽題。</p>" +
       '<section class="card"><div class="row">' +
       '<label class="field">題型<select id="qk"><option value="open">開放式情境題(自己寫答案,對照要點)</option><option value="mcq">選擇題</option><option value="all">全部混合</option></select></label>' +
-      '<label class="field">題數<input id="qn" type="number" min="1" max="' + Math.max(total, 1) + '" value="' + Math.min(10, Math.max(total, 1)) + '"></label>' +
+      '<label class="field">題數<select id="qn">' +
+      COUNTS.map(function (n) { return '<option value="' + n + '"' + (n === 10 ? " selected" : "") + ">" + n + " 題</option>"; }).join("") +
+      "</select></label>" +
       '<label class="field">選擇題模式<select id="qm"><option value="study">練習(作答後立刻看解析)</option><option value="exam">模擬考(交卷後看解析)</option></select></label>' +
       '<label class="field">範圍<select id="qd"><option value="all">全部 domain(依官方權重)</option>' +
       S.outline.domains.map(function (d) { return '<option value="d' + d.id + '">D' + d.id + " " + C.esc(d.zh) + "</option>"; }).join("") +

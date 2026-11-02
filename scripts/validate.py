@@ -84,7 +84,16 @@ def main():
     per_domain = Counter()
     status_count = Counter()
     kind_count = Counter()
-    for path in sorted(list((DATA / "questions").glob("d*.json")) + list((DATA / "questions").glob("o*.json"))):
+    qdir = DATA / "private" / "questions"
+    if not qdir.exists():
+        warn(f"private question bank not found: {qdir.relative_to(DATA.parent.parent)} (questions are private and git-ignored)")
+    qfiles = sorted(list(qdir.glob("d*.json")) + list(qdir.glob("o*.json"))) if qdir.exists() else []
+    if qdir.exists():
+        # manifest the site reads so it does not have to probe for each file
+        (qdir / "index.json").write_text(
+            json.dumps({"files": [f.name for f in qfiles]}, ensure_ascii=False, indent=2) + "\n",
+            encoding="utf-8", newline="\n")
+    for path in qfiles:
         try:
             qs = json.loads(path.read_text(encoding="utf-8"))
         except json.JSONDecodeError as e:

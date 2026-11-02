@@ -97,3 +97,9 @@ main.wide { max-width: 1180px; }
 .callout.trap { border-left-color: var(--bad); background: var(--bad-bg); }
 .card.official > summary { cursor: pointer; font-weight: 600; }
 .checklist { margin: 8px 0 0; }
+
+/* ---- open-ended questions ---- */
+textarea { font: inherit; width: 100%; padding: 8px 10px; border-radius: 8px; border: 1px solid var(--line); background: var(--panel); color: var(--text); resize: vertical; }
+.keypoints { display: flex; flex-direction: column; gap: 6px; margin: 8px 0; }
+.kp { display: flex; gap: 8px; align-items: flex-start; padding: 6px 10px; border: 1px solid var(--line); border-radius: 8px; background: var(--panel); cursor: pointer; }
+.kp input { margin-top: 5px; }

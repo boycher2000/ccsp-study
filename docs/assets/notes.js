@@ -59,12 +59,13 @@
     var i = S.order.indexOf(id), prev = S.order[i - 1], next = S.order[i + 1];
     var body = S.notes[id] ? C.md(S.notes[id].replace(/^## .*\n/, "")) : '<p class="muted">這個子項的筆記還沒寫。</p>';
     var n = S.qcount[id] || 0;
+    var hasBank = Object.keys(S.qcount).length > 0; // the question bank is private and may be absent
     var html = '<p class="muted"><a href="#/">總覽</a> / D' + d.id + " " + C.esc(d.zh) + "</p>" +
       "<h1>" + t.id + " " + C.esc(t.zh) + '</h1><div class="muted">' + C.esc(t.title) + "</div>" +
       '<details class="card official"><summary>官方大綱要點(' + t.bullets.length + " 項,用來檢查筆記有沒有漏)</summary><ol class=\"checklist\">" +
       t.bullets.map(function (b) { return "<li>" + C.esc(b) + "</li>"; }).join("") + "</ol></details>" +
       '<article class="note-body">' + body + "</article>" +
-      '<div class="row"><a class="btn' + (n ? "" : " secondary") + '" href="../quiz/#/topic/' + id + '">練習這個子項(' + n + " 題)</a></div>" +
+      (hasBank ? '<div class="row"><a class="btn' + (n ? "" : " secondary") + '" href="../quiz/#/topic/' + id + '">練習這個子項(' + n + " 題)</a></div>" : "") +
       '<div class="row">' +
       (prev ? '<a class="btn secondary" href="#/t/' + prev + '">← ' + prev + " " + C.esc(S.topics[prev].zh) + "</a>" : "") +
       (next ? '<a class="btn secondary" href="#/t/' + next + '">' + next + " " + C.esc(S.topics[next].zh) + " →</a>" : "") + "</div>";

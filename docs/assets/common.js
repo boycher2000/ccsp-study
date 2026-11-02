@@ -128,11 +128,27 @@
   }
   function loadQuestions(outline) {
     var list = [], byId = {};
-    return Promise.all(outline.domains.map(function (d) {
-      return getJSON(BASE + "data/questions/d" + d.id + ".json").then(function (qs) {
-        qs.forEach(function (q) { list.push(q); byId[q.id] = q; });
-      }).catch(function () { /* no questions yet for this domain */ });
-    })).then(function () { return { list: list, byId: byId }; });
+    // The question bank is private: it lives in docs/data/private/questions/ (git-ignored),
+    // so it exists on the local machine only and is simply absent on the published site.
+    // d<N>.json = multiple choice, o<N>.json = open-ended scenario questions.
+    var DIR = BASE + "data/private/questions/";
+    function add(file) {
+      return getJSON(DIR + file).then(function (qs) {
+        qs.forEach(function (q) {
+          if (!q.type) q.type = "mcq";
+          list.push(q); byId[q.id] = q;
+        });
+      }).catch(function () { /* file missing */ });
+    }
+    function scan() {
+      var files = [];
+      outline.domains.forEach(function (d) { files.push("d" + d.id + ".json", "o" + d.id + ".json"); });
+      return Promise.all(files.map(add));
+    }
+    // index.json (written by scripts/validate.py) lists the files; fall back to scanning without it
+    return getJSON(DIR + "index.json").then(function (idx) {
+      return Promise.all(idx.files.map(add));
+    }, scan).then(function () { return { list: list, byId: byId }; });
   }
   function loadNotes(outline) {
     var notes = {};

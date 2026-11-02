@@ -42,7 +42,9 @@
     CCSP.loadOutline().then(function (o) {
       return CCSP.loadQuestions(o.outline);
     }).then(function (q) {
-      document.getElementById("qc").textContent = "題庫 " + q.list.length + " 題(目標 1000)";
+      document.getElementById("qc").textContent = q.list.length
+        ? "題庫 " + q.list.length + " 題(私人,僅本機)"
+        : "題庫為私人,只在本機載入";
     }).catch(function () {});
   </script>
 </body>

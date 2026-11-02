@@ -4,3 +4,7 @@ __pycache__/
 *.pyc
 node_modules/
 .claude/
+
+# Private question bank and raw inputs: never commit (may derive from third-party material)
+docs/data/private/
+private/

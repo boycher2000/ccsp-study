@@ -128,11 +128,19 @@
   }
   function loadQuestions(outline) {
     var list = [], byId = {};
-    return Promise.all(outline.domains.map(function (d) {
-      return getJSON(BASE + "data/questions/d" + d.id + ".json").then(function (qs) {
-        qs.forEach(function (q) { list.push(q); byId[q.id] = q; });
-      }).catch(function () { /* no questions yet for this domain */ });
-    })).then(function () { return { list: list, byId: byId }; });
+    // d<N>.json = multiple choice, o<N>.json = open-ended scenario questions
+    var jobs = [];
+    outline.domains.forEach(function (d) {
+      ["d", "o"].forEach(function (prefix) {
+        jobs.push(getJSON(BASE + "data/questions/" + prefix + d.id + ".json").then(function (qs) {
+          qs.forEach(function (q) {
+            if (!q.type) q.type = "mcq";
+            list.push(q); byId[q.id] = q;
+          });
+        }).catch(function () { /* no questions of this kind yet */ }));
+      });
+    });
+    return Promise.all(jobs).then(function () { return { list: list, byId: byId }; });
   }
   function loadNotes(outline) {
     var notes = {};
